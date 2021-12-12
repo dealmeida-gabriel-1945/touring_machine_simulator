@@ -93,19 +93,7 @@ class TuringMachine:
     def _print_verbose(self, current_block, current_state, original_tape):
         bloco = '.' * (16 - len(current_block.id)) + current_block.id
         estado = '0' * (4 - len(current_state)) + current_state
-        copy_tape = [char for char in original_tape]
 
-        tape_with_head = None
-        if self.index == 0:
-            tape_with_head = parameters.head_start + copy_tape[self.index] + parameters.head_end + \
-                             ''.join(copy_tape[self.index + 1:])
-        elif self.index == len(copy_tape) - 1:
-            tape_with_head = ''.join(copy_tape[:self.index]) + \
-                             parameters.head_start + copy_tape[self.index] + parameters.head_end
-        else:
-            tape_with_head = ''.join(copy_tape[:self.index - 1]) + \
-                             parameters.head_start + copy_tape[self.index] + parameters.head_end + \
-                             ''.join(copy_tape[self.index:])
         print(f'{bloco}.{estado}: {self._generate_right_and_left_queues(original_tape)}')
 
     def _generate_right_and_left_queues(self, original_tape):
