@@ -1,6 +1,7 @@
-from model.touring_machine import TuringMachine
+import parameters
 from model.block import Block
 from model.command import Command
+from model.turing_machine import TuringMachine
 
 
 def retrieve_mt_from_file(file_name):
@@ -10,8 +11,9 @@ def retrieve_mt_from_file(file_name):
     :param file_name the file's absolut path
     :return: the touring machine in a TouringMachine class object
     """
+    print(f'file -> {file_name}')
     # The MT object is initialized
-    builded_mt = TuringMachine()
+    builded_mt = TuringMachine(parameters.steps)
     # The file is open and it's content is taken
     with open(file_name) as f:
         lines = f.readlines()

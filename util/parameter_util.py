@@ -15,6 +15,8 @@ def handle_args(args):
             parameters.steps = int(args[args.index(parameters.possible_params[2][0]) + 1])
         else:
             parameters.steps = int(args[args.index(parameters.possible_params[2][1]) + 1])
+    else:
+        parameters.steps = parameters.default_steps * 1
 
 
 def show_parameters():
@@ -22,7 +24,7 @@ def show_parameters():
     This function show all parameters presence at arguments of the command line
     :return: void
     """
-    print(parameters.steps)
-    print(parameters.run_resume)
-    print(parameters.run_step)
-    print(parameters.run_verbose)
+    print(f'steps -> {parameters.steps}')
+    print(f'resume -> {parameters.run_resume}')
+    print(f'has steps -> {parameters.run_step}')
+    print(f'verbose -> {parameters.run_verbose}')

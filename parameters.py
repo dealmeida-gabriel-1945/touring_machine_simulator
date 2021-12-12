@@ -10,6 +10,9 @@ blank_char = "_"
 max_right_blank_sequence = 20
 max_left_blank_sequence = 20
 
+default_steps = 3 #500
+last_new_instructions = ''
+
 head_start = '('
 head_end = ')'
 

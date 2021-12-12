@@ -1,14 +1,16 @@
 # This class will hold all Touring Machine's data
 import parameters
+import util.parameter_util as parameter_util
 
 
 class TuringMachine:
-    def __init__(self, blocks=None):
+    def __init__(self, steps, blocks=None):
         if blocks is None:
             blocks = list()
         self.blocks = blocks
         self.index = 0
         self.tape = list()
+        self.steps = steps
 
     def get_final_tape_content(self):
         return ''.join(self.tape)
@@ -30,6 +32,9 @@ class TuringMachine:
         current_state = current_block.initial_state
 
         while current_state != 'pare' and current_state != 'retorne':
+            self.steps -= 1
+            if self.steps < 0:
+                self._open_terminal()
 
             # verbose
             self._check_verbose(current_block, current_state, tape)
@@ -119,4 +124,14 @@ class TuringMachine:
             current_index += 1
 
         return result_str
+
+    def _open_terminal(self):
+        new_instructions = input('Novas intruções (enter para repetir as anteriores): ').split(' ')
+        if new_instructions[0] == '':
+            new_instructions = parameters.last_new_instructions
+        else:
+            parameters.last_new_instructions = new_instructions
+        print(new_instructions)
+        parameter_util.handle_args(new_instructions)
+        self.steps = parameters.steps * 1
 
