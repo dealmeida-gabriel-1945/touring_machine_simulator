@@ -8,14 +8,19 @@ class TuringMachine:
             blocks = list()
         self.blocks = blocks
         self.index = 0
+        self.tape = list()
+
+    def get_final_tape_content(self):
+        return ''.join(self.tape)
 
     def accept(self, original_tape):
         main_block = list(filter(
             lambda block: block.id == 'main',
             self.blocks
         ))[0]
+        self.tape = [char for char in original_tape]
         self._accept(
-            [char for char in original_tape],
+            self.tape,
             main_block
         )
 
@@ -87,7 +92,7 @@ class TuringMachine:
         self._check_verbose(current_block, current_state, tape)
 
     def _check_verbose(self, current_block, current_state, tape):
-        if current_state != 'retorne':
+        if current_state != 'retorne' and parameters.run_verbose:
             self._print_verbose(current_block, current_state, tape)
 
     def _print_verbose(self, current_block, current_state, original_tape):
