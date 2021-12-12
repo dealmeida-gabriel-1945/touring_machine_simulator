@@ -1,4 +1,4 @@
-from model.touring_machine import TouringMachine
+from model.touring_machine import TuringMachine
 from model.block import Block
 from model.command import Command
 
@@ -11,7 +11,7 @@ def retrieve_mt_from_file(file_name):
     :return: the touring machine in a TouringMachine class object
     """
     # The MT object is initialized
-    builded_mt = TouringMachine()
+    builded_mt = TuringMachine()
     # The file is open and it's content is taken
     with open(file_name) as f:
         lines = f.readlines()
@@ -33,7 +33,7 @@ def retrieve_mt_from_file(file_name):
                     builded_mt.blocks[
                         len(builded_mt.blocks) - 1
                     ].commands.append(
-                        Command(current_state=args[0], block_id=args[1], return_state=args[0])
+                        Command(current_state=args[0], block_id=args[1], return_state=args[2])
                     )
                 # If not, the command is a normal one
                 else:
