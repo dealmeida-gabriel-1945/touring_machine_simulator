@@ -11,7 +11,6 @@ def retrieve_mt_from_file(file_name):
     :param file_name the file's absolut path
     :return: the touring machine in a TouringMachine class object
     """
-    print(f'file -> {file_name}')
     # The MT object is initialized
     builded_mt = TuringMachine(parameters.steps)
     # The file is open and it's content is taken
@@ -31,11 +30,16 @@ def retrieve_mt_from_file(file_name):
             # If not, the line is a creation of a command line
             else:
                 # If the command line has 3 parts, that means that the command is a call fot another block
-                if len(args) == 3:
+                if len(args) == 3 or len(args) == 4:
                     builded_mt.blocks[
                         len(builded_mt.blocks) - 1
                     ].commands.append(
-                        Command(current_state=args[0], block_id=args[1], return_state=args[2])
+                        Command(
+                            current_state=args[0],
+                            block_id=args[1],
+                            return_state=args[2],
+                            is_breakpoint=is_command_breakpoint(args)
+                        )
                     )
                 # If not, the command is a normal one
                 else:
@@ -48,12 +52,18 @@ def retrieve_mt_from_file(file_name):
                             new_symbol=args[2],
                             movement=args[3],
                             new_state=args[4],
+                            is_breakpoint=is_command_breakpoint(args)
                         )
                     )
         # Close the file
         f.close()
     # Returns the Touring Machine object
     return builded_mt
+
+
+def is_command_breakpoint(args):
+    return ((len(args) == 6) and (args[5] == parameters.breakpoint_char)) or \
+           ((len(args) == 4) and (args[3] == parameters.breakpoint_char))
 
 
 def clear_splitted_line(line):

@@ -47,15 +47,20 @@ class TuringMachine:
                 )
             )
 
-            if len(commands_from_state) == 1 and commands_from_state[0].is_another_block_call:
+            current_command = commands_from_state[0]
+
+            if current_command.is_breakpoint:
+                self._open_terminal()
+
+            if len(commands_from_state) == 1 and current_command.is_another_block_call:
                 self._accept(
                     tape,
                     list(filter(
-                        lambda block: block.id == commands_from_state[0].block_id,
+                        lambda block: block.id == current_command.block_id,
                         self.blocks
                     ))[0]
                 )
-                current_state = commands_from_state[0].return_state
+                current_state = current_command.return_state
 
             else:
 
@@ -78,17 +83,15 @@ class TuringMachine:
                 try:
                     command = star_commands[0] if len(non_star_commands) == 0 else non_star_commands[0]
                 except:
-                    print(f'An error appeared at index {self.index} while whatching symbol {symbol_read} at'
-                          f' state {current_state} on block {current_block.id}')
+                    print(f'An error appeared: symbol: {symbol_read}; '
+                          f'state: {current_state}; block: {current_block.id}')
 
                 tape[self.index] = command.new_symbol if command.new_symbol != '*' else tape[self.index]
                 current_state = command.new_state if command.new_state != '*' else current_state
 
                 if command.movement != 'i':
                     if self.index == 0 and command.movement == 'e':
-                        aux = [parameters.blank_char]
-                        aux.extend(tape)
-                        tape = aux
+                        tape.insert(0, parameters.blank_char)
                         self.index += 1
                     if self.index == (len(tape) - 1) and command.movement == 'd':
                         tape.append(parameters.blank_char)
@@ -118,7 +121,8 @@ class TuringMachine:
         current_index = left_index
         while current_index < right_index:
             if current_index + 1 == center_index:
-                result_str = f'{result_str}({tape_with_max_blank_chars[current_index]})'
+                result_str = f'{result_str}{parameters.head_start}{tape_with_max_blank_chars[current_index]}' \
+                             f'{parameters.head_end}'
             else:
                 result_str = f'{result_str}{tape_with_max_blank_chars[current_index]}'
             current_index += 1
