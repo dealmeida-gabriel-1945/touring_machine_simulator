@@ -9,7 +9,62 @@
 ; 7 = I
 ; 8 = O
 ; 9 = P
-bloco main 01
+bloco main 300
+
+    ;esta parte verifica se a palavra está escrita corretamente
+    ;verificando primeiro numero
+    300 0 −− * d 300
+    300 1 −− * d 300
+    300 2 −− * d 300
+    300 3 −− * d 300
+    300 4 −− * d 300
+    300 5 −− * d 300
+    300 6 −− * d 300
+    300 7 −− * d 300
+    300 8 −− * d 300
+    300 9 −− * d 300
+    300 + -- * d 301
+    300 * -- * i 404
+
+    ;verificando segundo numero
+
+    301 0 −− * d 302
+    301 1 −− * d 302
+    301 2 −− * d 302
+    301 3 −− * d 302
+    301 4 −− * d 302
+    301 5 −− * d 302
+    301 6 −− * d 302
+    301 7 −− * d 302
+    301 8 −− * d 302
+    301 9 −− * d 302
+    301 * -- * i 404
+
+    302 0 −− * d 302
+    302 1 −− * d 302
+    302 2 −− * d 302
+    302 3 −− * d 302
+    302 4 −− * d 302
+    302 5 −− * d 302
+    302 6 −− * d 302
+    302 7 −− * d 302
+    302 8 −− * d 302
+    302 9 −− * d 302
+    302 = -- * d 303
+    302 * -- * i 404
+
+
+    ;verificando se depois da igualdade está vazio
+    303 _ -- * e 304
+    303 * -- * i 404
+
+    ;volta pro começo da palavra
+    304 * -- * e 304
+    304 _ -- * d 01
+
+    404 escreveErro 405
+    405 * -- * i retorne
+
     01 adicionaAreaDeSobras 100
     100 moveCabecaParaProximoNumeroPrimeiroDecimal 02
 
@@ -26,7 +81,6 @@ bloco main 01
 
     02 # -- * d 1001
 
-    ;todo voltar para o lugar certo
     03 zeroMais 101
     04 umMais 101
     05 doisMais 101
@@ -65,6 +119,17 @@ bloco main 01
     9999 * -- * i retorne
 
 fim ; main
+
+bloco escreveErro 01
+    01 * -- * d 01
+    01 _ -- * e 02
+    02 * -- _ e 02
+    02 _ -- * d 03
+    03 _ -- E d 04
+    04 _ -- R d 05
+    05 _ -- R d 06
+    06 _ -- O d retorne
+fim
 
 bloco formataSaida 02
     02 _ -- * d 03
