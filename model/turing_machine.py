@@ -135,7 +135,6 @@ class TuringMachine:
             new_instructions = parameters.last_new_instructions
         else:
             parameters.last_new_instructions = new_instructions
-        print(new_instructions)
         parameter_util.handle_args(new_instructions)
         self.steps = parameters.steps * 1
 
