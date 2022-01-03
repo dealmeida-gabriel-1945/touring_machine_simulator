@@ -79,7 +79,7 @@ def clear_splitted_line(line):
         if part.endswith('\n'):
             part = part[:len(part) - 1]
         # If the part of the line is empty or is '--', ignores it
-        if part == '' or part == '−−':
+        if part == '' or part == '--' or part == '−−':
             continue
         # Then, only important parts will reach this part
         cleared_line_parts.append(part)

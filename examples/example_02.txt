@@ -1,0 +1,1078 @@
+; somador de números decimais
+; 0 = Q
+; 1 = W
+; 2 = E
+; 3 = R
+; 4 = T
+; 5 = Y
+; 6 = U
+; 7 = I
+; 8 = O
+; 9 = P
+bloco main 01
+    01 adicionaAreaDeSobras 100
+    100 moveCabecaParaProximoNumeroPrimeiroDecimal 02
+
+    02 0 −− Q i 03
+    02 1 −− W i 04
+    02 2 −− E i 05
+    02 3 −− R i 06
+    02 4 −− T i 07
+    02 5 −− Y i 08
+    02 6 −− U i 09
+    02 7 −− I i 10
+    02 8 −− O i 11
+    02 9 −− P i 12
+
+    02 # -- * d 1001
+
+    ;todo voltar para o lugar certo
+    03 zeroMais 101
+    04 umMais 101
+
+    101 voltaParaAntesDaAreaDeSobra 100
+
+    ;aqui é quando não há mais números a serem somados do lado esquerdo
+    1001 moveCabecaParaUnidadeSegundoNumeroPT1 1002
+
+    1002 * -- * i 1003
+    1002 + -- * i 1004
+
+    1003 zeroMais 101
+
+    1004 moveCabecoteParaAreaDeSobras 1005
+
+    1005 # −− * e 1006
+    1005 1 −− _ i 1006
+    1005 _ -- * i 9998
+
+    1006 moveCabecoteAposIgualdade 1007
+
+    1007 * -- * d 1007
+    1007 _ -- 1 e 9998
+
+    9998 formataSaida 9999
+    9999 * -- * i retorne
+
+fim ; main
+
+bloco formataSaida 02
+    02 _ -- * d 03
+    03 # -- _ d 04
+
+    04 Q -- 0 d 04
+    04 W -- 1 d 04
+    04 E -- 2 d 04
+    04 R -- 3 d 04
+    04 T -- 4 d 04
+    04 Y -- 5 d 04
+    04 U -- 6 d 04
+    04 I -- 7 d 04
+    04 O -- 8 d 04
+    04 P -- 9 d 04
+    04 + -- * d 04
+    04 = -- * d 05
+
+    ;aqui inverte a fita a partir da igualdade
+    05 * -- * d 05
+    05 _ -- X e 07
+
+    07 0 -- _ d 100
+    07 1 -- _ d 101
+    07 2 -- _ d 102
+    07 3 -- _ d 103
+    07 4 -- _ d 104
+    07 5 -- _ d 105
+    07 6 -- _ d 106
+    07 7 -- _ d 107
+    07 8 -- _ d 108
+    07 9 -- _ d 109
+    07 = -- * d 08
+
+    08 * -- * d 08
+    08 X -- * d 09
+
+    100 levaZeroParaDepoisDoX 07
+    101 levaUmParaDepoisDoX 07
+    102 levaDoisParaDepoisDoX 07
+    103 levaTresParaDepoisDoX 07
+    104 levaQuatroParaDepoisDoX 07
+    105 levaCincoParaDepoisDoX 07
+    106 levaSeisParaDepoisDoX 07
+    107 levaSeteParaDepoisDoX 07
+    108 levaOitoParaDepoisDoX 07
+    109 levaNoveParaDepoisDoX 07
+
+
+    09 0 -- _ e 200
+    09 1 -- _ e 201
+    09 2 -- _ e 202
+    09 3 -- _ e 203
+    09 4 -- _ e 204
+    09 5 -- _ e 205
+    09 6 -- _ e 206
+    09 7 -- _ e 207
+    09 8 -- _ e 208
+    09 9 -- _ e 209
+    09 * -- _ i retorne
+
+    200 levaZeroParaDepoisDoIgual 09
+    201 levaUmParaDepoisDoIgual 09
+    202 levaDoisParaDepoisDoIgual 09
+    203 levaTresParaDepoisDoIgual 09
+    204 levaQuatroParaDepoisDoIgual 09
+    205 levaCincoParaDepoisDoIgual 09
+    206 levaSeisParaDepoisDoIgual 09
+    207 levaSeteParaDepoisDoIgual 09
+    208 levaOitoParaDepoisDoIgual 09
+    209 levaNoveParaDepoisDoIgual 09
+fim
+
+bloco levaZeroParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 0 d 03
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+bloco levaUmParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 1 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+
+bloco levaDoisParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 2 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+
+bloco levaTresParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 3 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+bloco levaQuatroParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 4 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+bloco levaCincoParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 5 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+bloco levaSeisParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 6 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+bloco levaSeteParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 7 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+bloco levaOitoParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 8 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+bloco levaNoveParaDepoisDoIgual 01
+    01 * -- * e 01
+    01 = -- * d 02
+    02 * -- * d 02
+    02 _ -- 9 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
+    03 _ -- * d 03
+    03 X -- * d 03
+    03 * -- * i 04
+    04 * -- * i retorne
+fim
+
+; DEPOIS DO X
+bloco levaZeroParaDepoisDoX 01
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 0 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaUmParaDepoisDoX 01
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 1 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaDoisParaDepoisDoX 01
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 2 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaTresParaDepoisDoX 01
+
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 3 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaQuatroParaDepoisDoX 01
+
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 4 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaCincoParaDepoisDoX 01
+
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 5 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaSeisParaDepoisDoX 01
+
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 6 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaSeteParaDepoisDoX 01
+
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 7 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaOitoParaDepoisDoX 01
+
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 8 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
+fim
+
+bloco levaNoveParaDepoisDoX 01
+
+    01 _ -- * d 02
+    01 X -- * d 03
+
+    02 * -- * d 02
+    02 X -- * d 03
+
+    03 * -- * d 03
+    03 _ -- 9 i 04
+
+    04 * -- * e 04
+    04 X -- * e 05
+
+    05 * -- * e 05
+    05 0 -- * e retorne
+    05 1 -- * e retorne
+    05 2 -- * e retorne
+    05 3 -- * e retorne
+    05 4 -- * e retorne
+    05 5 -- * e retorne
+    05 6 -- * e retorne
+    05 7 -- * e retorne
+    05 8 -- * e retorne
+    05 9 -- * e retorne
+    05 = -- * e retorne
+fim
+
+;================================================================================================================
+
+bloco levaSeisParaDepoisDoX 01
+    01 * -- * d 01
+    01 _ -- 1 i 02
+    02 * -- * e 02
+    02 _ -- * d retorne
+fim
+
+bloco adicionaAreaDeSobras 01
+    01 * −− * e 01
+    01 _ −− * i 02
+    02 _ −− # d retorne
+fim
+
+bloco voltaParaAntesDaAreaDeSobra 01
+    01 * −− * e 01
+    01 # −− * d retorne
+fim
+
+bloco moveCabecoteParaAreaDeSobras 01
+    01 * −− * e 01
+    01 # −− * e retorne
+fim
+
+; move o cabeçote para as unidades do primeiro número
+bloco moveCabecaParaProximoNumeroPrimeiroDecimal 01
+    01 0 −− * d 01
+    01 1 −− * d 01
+    01 2 −− * d 01
+    01 3 −− * d 01
+    01 4 −− * d 01
+    01 5 −− * d 01
+    01 6 −− * d 01
+    01 7 −− * d 01
+    01 8 −− * d 01
+    01 9 −− * d 01
+    01 Q −− * e retorne
+    01 W −− * e retorne
+    01 E −− * e retorne
+    01 R −− * e retorne
+    01 T −− * e retorne
+    01 Y −− * e retorne
+    01 U −− * e retorne
+    01 I −− * e retorne
+    01 O −− * e retorne
+    01 P −− * e retorne
+    01 + −− * e retorne
+    01 * -- * e 01
+fim
+
+; move o cabeçote para as unidades do primeiro número (PT1)
+bloco moveCabecaParaUnidadeSegundoNumeroPT1 01
+    01 0 −− * d 01
+    01 1 −− * d 01
+    01 2 −− * d 01
+    01 3 −− * d 01
+    01 4 −− * d 01
+    01 5 −− * d 01
+    01 6 −− * d 01
+    01 7 −− * d 01
+    01 8 −− * d 01
+    01 9 −− * d 01
+    01 + −− * d 01
+    01 Q −− * d 01
+    01 W −− * d 01
+    01 E −− * d 01
+    01 R −− * d 01
+    01 T −− * d 01
+    01 Y −− * d 01
+    01 U −− * d 01
+    01 I −− * d 01
+    01 O −− * d 01
+    01 P −− * d 01
+    01 = −− * i 02
+    02 moveCabecaParaUnidadeSegundoNumeroPT2 retorne
+fim
+
+; move o cabeçote para as unidades do primeiro número (PT2)
+bloco moveCabecaParaUnidadeSegundoNumeroPT2 01
+    01 0 −− * i retorne
+    01 1 −− * i retorne
+    01 2 −− * i retorne
+    01 3 −− * i retorne
+    01 4 −− * i retorne
+    01 5 −− * i retorne
+    01 6 −− * i retorne
+    01 7 −− * i retorne
+    01 8 −− * i retorne
+    01 9 −− * i retorne
+    01 + −− * i retorne
+    01 Q −− * e 01
+    01 W −− * e 01
+    01 E −− * e 01
+    01 R −− * e 01
+    01 T −− * e 01
+    01 Y −− * e 01
+    01 U −− * e 01
+    01 I −− * e 01
+    01 O −− * e 01
+    01 P −− * e 01
+    01 = −− * e 01
+fim
+
+; move o cabeçote para depois da igualdade
+bloco moveCabecoteAposIgualdade 01
+
+    01 0 −− * d 01
+    01 1 −− * d 01
+    01 2 −− * d 01
+    01 3 −− * d 01
+    01 4 −− * d 01
+    01 5 −− * d 01
+    01 6 −− * d 01
+    01 7 −− * d 01
+    01 8 −− * d 01
+    01 9 −− * d 01
+    01 + −− * d 01
+    01 Q −− * d 01
+    01 W −− * d 01
+    01 E −− * d 01
+    01 R −− * d 01
+    01 T −− * d 01
+    01 Y −− * d 01
+    01 U −− * d 01
+    01 I −− * d 01
+    01 O −− * d 01
+    01 P −− * d 01
+    01 # −− * d 01
+    01 _ −− * d 01
+    01 = −− * d 02
+
+    02 0 −− * d 02
+    02 1 −− * d 02
+    02 2 −− * d 02
+    02 3 −− * d 02
+    02 4 −− * d 02
+    02 5 −− * d 02
+    02 6 −− * d 02
+    02 7 −− * d 02
+    02 8 −− * d 02
+    02 9 −− * d 02
+    02 _ −− * i retorne
+fim
+
+;================================================================= ZERO
+; SOMA ZERO COM ALGUM NUMERO
+bloco zeroMais 01
+    01 moveCabecaParaUnidadeSegundoNumeroPT1 02
+
+    02 0 −− Q i 03
+    03 zeroMaisZero retorne
+
+    02 1 −− W i 10
+    10 zeroMaisUm retorne
+
+    02 2 −− E i 20
+    20 zeroMaisDois retorne
+
+    02 3 −− R i 30
+    30 zeroMaisTres retorne
+
+    02 4 −− T i 40
+    40 zeroMaisQuatro retorne
+
+    02 5 −− Y i 50
+    50 zeroMaisCinco retorne
+
+    02 6 −− U i 60
+    60 zeroMaisSeis retorne
+
+    02 7 −− I i 70
+    70 zeroMaisSete retorne
+
+    02 8 −− O i 80
+    80 zeroMaisOito retorne
+
+    02 9 −− P i 90
+    90 zeroMaisNove retorne
+
+    02 + −− * i 100
+    100 zeroMaisZero retorne
+
+fim
+
+; Soma 0+0
+bloco zeroMaisZero 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 0 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 1 i retorne
+fim
+
+; Soma 0+1
+bloco zeroMaisUm 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 1 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 2 i retorne
+fim
+
+; Soma 0+2
+bloco zeroMaisDois 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 2 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 3 i retorne
+fim
+
+; Soma 0+3
+bloco zeroMaisTres 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 3 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 4 i retorne
+fim
+
+; Soma 0+4
+bloco zeroMaisQuatro 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 4 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 5 i retorne
+fim
+
+; Soma 0+5
+bloco zeroMaisCinco 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 5 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 6 i retorne
+fim
+
+; Soma 0+6
+bloco zeroMaisSeis 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 6 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 7 i retorne
+fim
+
+; Soma 0+7
+bloco zeroMaisSete 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 7 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 8 i retorne
+fim
+
+; Soma 0+8
+bloco zeroMaisOito 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 8 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 9 i retorne
+fim
+
+; Soma 0+9
+bloco zeroMaisNove 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 9 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 0 i retorne
+fim
+
+;================================================================= UM
+; SOMA UM COM ALGUM NUMERO
+bloco umMais 01
+    01 moveCabecaParaUnidadeSegundoNumeroPT1 02
+
+    02 0 −− Q i 03
+    03 umMaisZero retorne
+
+    02 1 −− W i 10
+    10 umMaisUm retorne
+
+    02 2 −− E i 20
+    20 umMaisDois retorne
+
+    02 3 −− R i 30
+    30 umMaisTres retorne
+
+    02 4 −− T i 40
+    40 umMaisQuatro retorne
+
+    02 5 −− Y i 50
+    50 umMaisCinco retorne
+
+    02 6 −− U i 60
+    60 umMaisSeis retorne
+
+    02 7 −− I i 70
+    70 umMaisSete retorne
+
+    02 8 −− O i 80
+    80 umMaisOito retorne
+
+    02 9 −− P i 90
+    90 umMaisNove retorne
+
+    02 + −− * i 100
+    100 umMaisZero retorne
+
+fim
+
+; Soma 1+0
+bloco umMaisZero 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 1 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 2 i retorne
+fim
+; Soma 1+1
+bloco umMaisUm 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 2 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 3 i retorne
+fim
+
+; Soma 1+2
+bloco umMaisDois 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 3 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 4 i retorne
+fim
+
+; Soma 1+3
+bloco umMaisTres 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 4 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 5 i retorne
+fim
+
+; Soma 1+4
+bloco umMaisQuatro 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 5 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 6 i retorne
+fim
+
+; Soma 1+5
+bloco umMaisCinco 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 6 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 7 i retorne
+fim
+
+; Soma 1+6
+bloco umMaisSeis 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 7 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 8 i retorne
+fim
+
+; Soma 1+7
+bloco umMaisSete 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 8 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 9 i retorne
+fim
+
+; Soma 1+8
+bloco umMaisOito 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 9 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 0 i retorne
+fim
+
+; Soma 1+9
+bloco umMaisNove 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 0 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 1 i retorne
+fim

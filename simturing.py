@@ -9,15 +9,15 @@ year = 2021
 
 
 def main():
-    debug = False
+    debug = 0
 
     if debug:
         parameters.last_new_instructions = ['-v', '-s', '400']
         parameter_util.handle_args(parameters.last_new_instructions)
         print("\n Simulador de Máquina de Turing ver 1. 0 \n Desenvolvido como trabalho prático para a disciplina de "
               f"Teoria da Computação \n {author}, {institution}, {year}")
-        parameters.first_word = 'aaaaaaaaaa'
-        mt = file_util.retrieve_mt_from_file('/home/gabriel/Documents/projects/python/touring_machine_simulator/examples/example_01.txt')
+        parameters.first_word = '1000+1='
+        mt = file_util.retrieve_mt_from_file('/home/gabriel/Documents/projects/python/touring_machine_simulator/examples/example_02.txt')
         mt.accept(parameters.first_word)
         if parameters.run_resume:
             print(f'Conteúdo final na fita: {mt.get_final_tape_content()}')
