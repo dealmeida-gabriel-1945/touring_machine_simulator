@@ -29,6 +29,14 @@ bloco main 01
     ;todo voltar para o lugar certo
     03 zeroMais 101
     04 umMais 101
+    05 doisMais 101
+    06 tresMais 101
+    07 quatroMais 101
+    08 cincoMais 101
+    09 seisMais 101
+    10 seteMais 101
+    11 oitoMais 101
+    12 noveMais 101
 
     101 voltaParaAntesDaAreaDeSobra 100
 
@@ -49,7 +57,9 @@ bloco main 01
     1006 moveCabecoteAposIgualdade 1007
 
     1007 * -- * d 1007
-    1007 _ -- 1 e 9998
+    1007 _ -- 1 e 1008
+    1008 * -- * e 1008
+    1008 _ -- * i 9998
 
     9998 formataSaida 9999
     9999 * -- * i retorne
@@ -132,7 +142,11 @@ bloco levaZeroParaDepoisDoIgual 01
     01 * -- * e 01
     01 = -- * d 02
     02 * -- * d 02
-    02 _ -- 0 d 03
+    02 _ -- 0 d 06
+
+    06 X -- * i retorne
+    06 * -- * i 03
+
     03 _ -- * d 03
     03 X -- * d 03
     03 * -- * i 04
@@ -537,17 +551,17 @@ bloco levaNoveParaDepoisDoX 01
     04 X -- * e 05
 
     05 * -- * e 05
-    05 0 -- * e retorne
-    05 1 -- * e retorne
-    05 2 -- * e retorne
-    05 3 -- * e retorne
-    05 4 -- * e retorne
-    05 5 -- * e retorne
-    05 6 -- * e retorne
-    05 7 -- * e retorne
-    05 8 -- * e retorne
-    05 9 -- * e retorne
-    05 = -- * e retorne
+    05 0 -- * i retorne
+    05 1 -- * i retorne
+    05 2 -- * i retorne
+    05 3 -- * i retorne
+    05 4 -- * i retorne
+    05 5 -- * i retorne
+    05 6 -- * i retorne
+    05 7 -- * i retorne
+    05 8 -- * i retorne
+    05 9 -- * i retorne
+    05 = -- * i retorne
 fim
 
 ;================================================================================================================
@@ -1075,4 +1089,197 @@ bloco umMaisNove 01
     31 _ −− 1 i 32
     32 moveCabecoteAposIgualdade 33
     33 _ −− 1 i retorne
+fim
+
+
+;================================================================= UM
+; SOMA DOIS COM ALGUM NUMERO
+bloco doisMais 01
+    01 moveCabecaParaUnidadeSegundoNumeroPT1 02
+
+    02 0 −− Q i 03
+    03 doisMaisZero retorne
+
+    02 1 −− W i 10
+    10 doisMaisUm retorne
+
+    02 2 −− E i 20
+    20 doisMaisDois retorne
+
+    02 3 −− R i 30
+    30 doisMaisTres retorne
+
+    02 4 −− T i 40
+    40 doisMaisQuatro retorne
+
+    02 5 −− Y i 50
+    50 doisMaisCinco retorne
+
+    02 6 −− U i 60
+    60 doisMaisSeis retorne
+
+    02 7 −− I i 70
+    70 doisMaisSete retorne
+
+    02 8 −− O i 80
+    80 doisMaisOito retorne
+
+    02 9 −− P i 90
+    90 doisMaisNove retorne
+
+    02 + −− * i 100
+    100 doisMaisZero retorne
+
+fim
+
+; Soma 2+0
+bloco doisMaisZero 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 2 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 3 i retorne
+fim
+; Soma 2+1
+bloco doisMaisUm 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 3 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 4 i retorne
+fim
+
+; Soma 2+2
+bloco doisMaisDois 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 4 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 5 i retorne
+fim
+
+; Soma 2+3
+bloco doisMaisTres 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 5 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 6 i retorne
+fim
+
+; Soma 2+4
+bloco doisMaisQuatro 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 6 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 7 i retorne
+fim
+
+; Soma 2+5
+bloco doisMaisCinco 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 7 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 8 i retorne
+fim
+
+; Soma 2+6
+bloco doisMaisSeis 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 8 i retorne
+
+    ;aqui há resto
+    31 moveCabecoteAposIgualdade 32
+    32 _ −− 9 i retorne
+fim
+
+; Soma 2+7
+bloco doisMaisSete 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 9 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 0 i retorne
+fim
+
+; Soma 2+8
+bloco doisMaisOito 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 0 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 1 i retorne
+fim
+
+; Soma 2+9
+bloco doisMaisNove 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 1 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 2 i retorne
 fim
