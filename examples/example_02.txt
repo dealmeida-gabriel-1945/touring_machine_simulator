@@ -2464,3 +2464,204 @@ bloco oitoMaisNove 01
     32 moveCabecoteAposIgualdade 33
     33 _ −− 8 i retorne
 fim
+
+
+;================================================================= UM
+; SOMA NOVE COM ALGUM NUMERO
+bloco noveMais 01
+    01 moveCabecaParaUnidadeSegundoNumeroPT1 02
+
+    02 0 −− Q i 03
+    03 noveMaisZero retorne
+
+    02 1 −− W i 10
+    10 noveMaisUm retorne
+
+    02 2 −− E i 20
+    20 noveMaisDois retorne
+
+    02 3 −− R i 30
+    30 noveMaisTres retorne
+
+    02 4 −− T i 40
+    40 noveMaisQuatro retorne
+
+    02 5 −− Y i 50
+    50 noveMaisCinco retorne
+
+    02 6 −− U i 60
+    60 noveMaisSeis retorne
+
+    02 7 −− I i 70
+    70 noveMaisSete retorne
+
+    02 8 −− O i 80
+    80 noveMaisOito retorne
+
+    02 9 −− P i 90
+    90 noveMaisNove retorne
+
+    02 + −− * i 100
+    100 noveMaisZero retorne
+
+fim
+
+; Soma 9+0
+bloco noveMaisZero 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− * i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 9 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 0 i retorne
+fim
+
+; Soma 9+1
+bloco noveMaisUm 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 0 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 1 i retorn
+fim
+
+; Soma 9+2
+bloco noveMaisDois 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 1 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 2 i retorn
+fim
+
+; Soma 9+3
+bloco noveMaisTres 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 2 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 3 i retorn
+fim
+
+; Soma 9+4
+bloco noveMaisQuatro 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 3 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 4 i retorne
+fim
+
+; Soma 9+5
+bloco noveMaisCinco 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 4 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 5 i retorne
+fim
+
+; Soma 9+6
+bloco noveMaisSeis 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 5 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 6 i retorne
+fim
+
+; Soma 9+7
+bloco noveMaisSete 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 6 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 7 i retorne
+fim
+
+; Soma 9+8
+bloco noveMaisOito 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 7 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 8 i retorne
+fim
+
+; Soma 9+9
+bloco noveMaisNove 01
+    01 moveCabecoteParaAreaDeSobras 02
+    02 _ −− 1 i 20
+    02 1 −− _ i 31
+
+    ;aqui não há resto
+    20 moveCabecoteAposIgualdade 21
+    21 _ −− 8 i retorne
+
+    ;aqui há resto
+    31 _ −− 1 i 32
+    32 moveCabecoteAposIgualdade 33
+    33 _ −− 9 i retorne
+fim
