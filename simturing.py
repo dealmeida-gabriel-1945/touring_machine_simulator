@@ -17,7 +17,7 @@ def main():
         print("\n Simulador de Máquina de Turing ver 1. 0 \n Desenvolvido como trabalho prático para a disciplina de "
               f"Teoria da Computação \n {author}, {institution}, {year}")
         for y in range(0, 10):
-            parameters.first_word = f'6+{y}='
+            parameters.first_word = f'7+{y}='
             print(parameters.first_word)
             mt = file_util.retrieve_mt_from_file('/home/gabriel/Documents/projects/python/touring_machine_simulator/examples/example_02.txt')
             mt.accept(parameters.first_word)
