@@ -9,7 +9,7 @@ year = 2021
 
 
 def main():
-    debug = 1
+    debug = 0
 
     if debug:
         parameters.last_new_instructions = ['-r', '-s', '40000']
@@ -20,8 +20,7 @@ def main():
         print(parameters.first_word)
         mt = file_util.retrieve_mt_from_file('/home/gabriel/Documents/projects/python/touring_machine_simulator/examples/example_02.txt')
         mt.accept(parameters.first_word)
-        if parameters.run_resume:
-            print(f'Conteúdo final na fita: {mt.get_final_tape_content()}')
+        print(f'Conteúdo final na fita: {mt.get_final_tape_content()}')
     else:
         parameters.last_new_instructions = sys.argv[1:len(sys.argv)]
         parameter_util.handle_args(parameters.last_new_instructions)
@@ -32,8 +31,7 @@ def main():
         # Retrieve the MT from the text file
         mt = file_util.retrieve_mt_from_file(sys.argv[1])
         mt.accept(parameters.first_word)
-        if parameters.run_resume:
-            print(f'Conteúdo final na fita: {mt.get_final_tape_content()}')
+        print(f'Conteúdo final na fita: {mt.get_final_tape_content()}')
 
 
 if __name__ == '__main__':
