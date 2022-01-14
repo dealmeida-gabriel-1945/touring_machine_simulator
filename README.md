@@ -59,6 +59,10 @@ regerá a MT. Vale salientar que deve-se estar atento à sintaxe, a qual pode se
 enunciado do trabalho, e que para adicionar breakpoints, os quais são usado para pausar a execução do programa durante
 o processamento de uma palavra w, basta adicionar um ponto de exclamação no final do comando desejado.
 
+Vale salientar que o uso da correto da sintaxe da MT é de completa responsabilidade da pessoa que a criou! O uso
+correto, em questão da sintaxe e semântica, de "palavras reservadas", tais como "pare" e "retorne", e o respeito à
+estrutura padrão dos comandos, blocos e comentários é necessário para o bom funcionamento do interpretador de MTs. 
+
 Tecnologia e materiais utilizados
 =========
 
