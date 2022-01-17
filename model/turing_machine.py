@@ -49,10 +49,11 @@ class TuringMachine:
 
             current_command = commands_from_state[0]
 
-            if current_command.is_breakpoint:
-                self._open_terminal()
-
             if len(commands_from_state) == 1 and current_command.is_another_block_call:
+
+                if current_command.is_breakpoint:
+                    self._open_terminal()
+
                 self._accept(
                     tape,
                     list(filter(
@@ -85,6 +86,9 @@ class TuringMachine:
                 except:
                     print(f'An error appeared: symbol: {symbol_read}; '
                           f'state: {current_state}; block: {current_block.id}')
+
+                if command.is_breakpoint:
+                    self._open_terminal()
 
                 tape[self.index] = command.new_symbol if command.new_symbol != '*' else tape[self.index]
                 current_state = command.new_state if command.new_state != '*' else current_state
