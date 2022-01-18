@@ -1,6 +1,6 @@
 # Flags to represent the presence of each of parameters
 run_resume = True
-run_verbose = True #False
+run_verbose = False
 run_step = False
 run_custom_head = False
 steps = 0
